@@ -19,21 +19,18 @@ int isKeyWord(char word[])
 
 char *tokenControl(char *string)
 {
-    char firstCh = string[0];
-    char lastCh = string[strlen(string) - 1];
+    char firstChar = string[0];
+    char lastChar = string[strlen(string) - 1];
     char *ret = malloc(strlen(string) + 10);
     // keyWord Control
     if (isKeyWord(string))
     {
-
         sprintf(ret, "KeyWord(%s)", string);
-
         return ret;
     }
     // Identifier Control
-    else if (isalpha(firstCh))
+    else if (isalpha(firstChar))
     {
-
         int i = 0;
         while ((isdigit(string[i]) || string[i] == '_' || isalpha(string[i])) && string[i] != '\0')
         {
@@ -55,16 +52,17 @@ char *tokenControl(char *string)
             exit(1);
         }
     }
-    else if ((firstCh == '+' || firstCh == '-' || firstCh == '*' || firstCh == '/') && strlen(string) == 1)
+    // Operator Control
+    else if ((firstChar == '+' || firstChar == '-' || firstChar == '*' || firstChar == '/') && strlen(string) == 1)
     {
-        sprintf(ret, "Operator(%c)", firstCh);
+        sprintf(ret, "Operator(%c)", firstChar);
         return ret;
     }
     // Integer constant control
-    else if (isdigit(firstCh) || firstCh == '-')
+    else if (isdigit(firstChar) || firstChar == '-')
     {
         int k = 0;
-        if (firstCh == '-')
+        if (firstChar == '-')
         {
             while (isdigit(string[k + 1]) && string[k + 1] != '\0')
             {
@@ -103,13 +101,13 @@ char *tokenControl(char *string)
         }
     }
 
-    else if (firstCh == '{' || firstCh == '}')
+    else if (firstChar == '{' || firstChar == '}')
     {
-        sprintf(ret, "CurlyBracket(%c)", firstCh);
+        sprintf(ret, "CurlyBracket(%c)", firstChar);
         return ret;
     }
     // String Const control
-    else if (firstCh == '"' && lastCh == '"')
+    else if (firstChar == '"' && lastChar == '"')
     {
 
         int b = strlen(string) - 2;
@@ -136,10 +134,13 @@ char *tokenControl(char *string)
             return ret;
         }
     }
-    else if (firstCh == '.' && strlen(string) == 1)
+    // End of Line Control
+    else if (firstChar == '.' && strlen(string) == 1)
     {
         return "EndOfLine";
     }
+    
+
 }
 
 int main()
