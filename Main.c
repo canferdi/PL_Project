@@ -142,17 +142,11 @@ char *tokenControl(char *string)
 
 }
 
-<<<<<<< Updated upstream
-int main(){
-    // deneme1
-    // deneme38
-    
-=======
 int main()
 {
-    
-    //deneme1  
->>>>>>> Stashed changes
+    //deneme1
+    //deneme2  
+
     int ab = '"';
     char *bb = tokenControl("6465456");
     char *kk = "arab";
