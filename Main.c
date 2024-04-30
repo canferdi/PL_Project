@@ -143,8 +143,7 @@ char *tokenControl(char *string)
 }
 
 int main()
-{
-    //değişiklik
+{  
     int ab = '"';
     char *bb = tokenControl(".");
     char *kk = "arab";
