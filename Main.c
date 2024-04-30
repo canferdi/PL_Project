@@ -142,7 +142,7 @@ char *tokenControl(char *string)
 
 }
 
-int main(){
+int main()
     // deneme1
     // deneme2
     //deneme3
