@@ -144,9 +144,10 @@ char *tokenControl(char *string)
 
 int main(){
     // deneme1
-    // deneme2
+    // deneme38
+    
     int ab = '"';
-    char *bb = tokenControl(".");
+    char *bb = tokenControl("6465456");
     char *kk = "arab";
     printf("%s\n", bb);
     char denem[] = "\"araba";
