@@ -109,7 +109,6 @@ char *tokenControl(char *string)
     // String Const control
     else if (firstChar == '"' && lastChar == '"')
     {
-        //ferdican 052
         int b = strlen(string) - 2;
         char copy[b];
         strncpy(copy, string + 1, b);
