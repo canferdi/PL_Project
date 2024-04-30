@@ -100,7 +100,7 @@ char *tokenControl(char *string)
             exit(1);
         }
     }
-  //deneme test  denemeeeee2222
+  
     else if (firstChar == '{' || firstChar == '}')
     {
         sprintf(ret, "CurlyBracket(%c)", firstChar);
