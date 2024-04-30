@@ -144,6 +144,7 @@ char *tokenControl(char *string)
 
 int main()
 {  
+    // deneme2
     int ab = '"';
     char *bb = tokenControl(".");
     char *kk = "arab";
