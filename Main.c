@@ -143,7 +143,8 @@ char *tokenControl(char *string)
 }
 
 int main()
-{  
+{
+    //deneme1  
     int ab = '"';
     char *bb = tokenControl(".");
     char *kk = "arab";
