@@ -17,12 +17,31 @@ enum tokenType {
     COMMENT
 };
 
-int identifierControl(){
-    //TODO: Implement identifier control.
+
+int identifierControl(const char *str){
+    if(strlen(str) > 10){
+        printf("Error: Identifier is too long.\n");
+    }
+    else
+    {
+        /* code */
+    }
+    
+
 }
 
-int integerControl(){
-    //TODO: Implement integer control.
+int integerControl(int num){
+    if(num > 99999999){
+        printf("Error: Integer is too long.\n");
+    }
+    else if (num < 0)
+    {
+        printf("Error: Integer is negative.\n");
+    }
+    else
+    {
+        printf("IntConts(%d)\n", num);
+    }
 }
 
 int operatorControl(){
@@ -57,6 +76,7 @@ int commentControl(){
 
 
 int main() {
+    integerControl(123);
     
     return 0;
 }
