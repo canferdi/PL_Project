@@ -25,18 +25,28 @@ int isInKeywords(char *str)
     {
         if (strcmp(str, keyWords[i]) == 0)
         {
+            printf("keyword bulundu\n");
+            return 1; // Keyword found
+        }
+    }
+    printf("keyword bulunamadı\n");
+
+    /*for (int i = 0; i < 8; i++)
+    {
+        if (strcmp(str, keyWords[i]) == 0)
+        {
             printf("keyword");
             return 1;
         }
     }
-    return 0;
+    return 0;*/
 }
 
-int isInOperators(char *str)
+int isInOperators(char str)
 {
     for (int i = 0; i < 4; i++)
     {
-        if (strcmp(str, operators[i]) == 0)
+        if (str == operators[0][i])
         {
             return 1;
         }
@@ -93,23 +103,20 @@ int integerControl(int num)
 int operatorControl(char *str)
 {
     int len = strlen(str);
-    if (len)
+    printf("String uzunluğu: %d\n", len);
+    if (len != 1)
     {
-        printf("string 1 e eşit değil\n");
         return 0;
     }
-    else if (isInOperators(str))
+    else if (isInOperators(str[0]))
     {
-        printf("Operator e girdi\n");
-        printf("Operator(%c)\n", str);
+        printf("Operator(%s)\n", str);
         return 1;
     }
     else
     {
-        printf("Operator değil\n");
         return 0;
     }
-    
 }
 
 int bracketControl(char *str)
@@ -144,10 +151,6 @@ int commentControl(char *str)
 
 int main()
 {
-    char str[] = "+";
-    int lenght = strlen(str);
-    printf("String uzunluğu: %\n", strlen(str));
-    //operatorControl(str);
 
     return 0;
 }
