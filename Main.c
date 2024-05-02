@@ -136,7 +136,13 @@ int keywordControl(char *str)
 
 int endOfLineControl(char *str)
 {
-    // TODO: Implement end of line control.
+    if(str == "."){
+        printf("EndOfLine\n");
+        return 1;
+    }
+    else{
+        return 0;
+    }
 }
 
 int commaControl(char *str)
