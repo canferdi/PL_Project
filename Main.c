@@ -25,21 +25,11 @@ int isInKeywords(char *str)
     {
         if (strcmp(str, keyWords[i]) == 0)
         {
-            printf("keyword bulundu\n");
-            return 1; // Keyword found
+            return 1; // Keyword found.
         }
     }
-    printf("keyword bulunamadı\n");
-
-    /*for (int i = 0; i < 8; i++)
-    {
-        if (strcmp(str, keyWords[i]) == 0)
-        {
-            printf("keyword");
-            return 1;
-        }
-    }
-    return 0;*/
+    return 0; // Keyword not found.
+    
 }
 
 int isInOperators(char str)
@@ -102,9 +92,7 @@ int integerControl(int num)
 
 int operatorControl(char *str)
 {
-    int len = strlen(str);
-    printf("String uzunluğu: %d\n", len);
-    if (len != 1)
+    if (strlen(str) == 1)
     {
         return 0;
     }
@@ -131,7 +119,13 @@ int stringControl(char *str)
 
 int keywordControl(char *str)
 {
-    // TODO: Implement keyword control.
+    if(isInKeywords(str)){
+        printf("Keyword(%s)\n", str);
+        return 1;
+    }
+    else{
+        return 0;
+    }
 }
 
 int endOfLineControl(char *str)
@@ -147,7 +141,15 @@ int endOfLineControl(char *str)
 
 int commaControl(char *str)
 {
-    // TODO: Implement comma control.
+    if (str == ",")
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+    
 }
 
 int commentControl(char *str)
@@ -157,6 +159,6 @@ int commentControl(char *str)
 
 int main()
 {
-
+    keywordControl("int");
     return 0;
 }
