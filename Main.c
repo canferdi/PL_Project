@@ -3,19 +3,6 @@
 #include <string.h>
 #include <ctype.h>
 
-/*enum tokenType
-{
-    IDENTIFIER,
-    INTEGER,
-    OPERATOR,
-    BRACKET,
-    STRING,
-    KEYWORD,
-    ENDOFLINE,
-    COMMA,
-    COMMENT
-};*/
-
 char keyWords[][10] = {"int", "text", "is", "loop", "times", "read", "write", "newLine"};
 char operators[][1] = {"+", "-", "*", "/"};
 
@@ -92,7 +79,7 @@ int integerControl(int num)
 
 int operatorControl(char *str)
 {
-    if (strlen(str) == 1)
+    if (!strlen(str) == 1)
     {
         return 0;
     }
@@ -109,7 +96,17 @@ int operatorControl(char *str)
 
 int bracketControl(char *str)
 {
-    // TODO: Implement bracket control.
+    if(str[0] == '{'){
+        printf("LeftCurlyBracket\n");
+        return 1;
+    }
+    else if(str[0] == '}'){
+        printf("RightCurlyBracket\n");
+        return 1;
+    }
+    else{
+        return 0;
+    }
 }
 
 int stringControl(char *str)
@@ -130,7 +127,7 @@ int keywordControl(char *str)
 
 int endOfLineControl(char *str)
 {
-    if(str == "."){
+    if(str[0] == '.'){
         printf("EndOfLine\n");
         return 1;
     }
@@ -159,6 +156,6 @@ int commentControl(char *str)
 
 int main()
 {
-    keywordControl("int");
+    bracketControl("{s");
     return 0;
 }
