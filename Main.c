@@ -6,15 +6,15 @@
 char keyWords[][10] = {"int", "text", "is", "loop", "times", "read", "write", "newLine"};
 
 enum tokenType {
-    IDENTIFIER = 'Identifier',
-    INTEGER = 'Integer Constant',
-    OPERATOR = 'Operator',
-    BRACKET = 'Bracket',
-    STRING = 'String Constant',
-    KEYWORD = 'Keyword',
-    ENDOFLINE = 'End of Line',
-    COMMA = 'Comma',
-    COMMENT = 'Comment'
+    IDENTIFIER,
+    INTEGER,
+    OPERATOR,
+    BRACKET,
+    STRING,
+    KEYWORD,
+    ENDOFLINE,
+    COMMA,
+    COMMENT
 };
 
 int identifierControl(){
@@ -58,6 +58,5 @@ int commentControl(){
 
 int main() {
     
-
     return 0;
 }
