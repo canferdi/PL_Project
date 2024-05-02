@@ -17,7 +17,7 @@
 };*/
 
 char keyWords[][10] = {"int", "text", "is", "loop", "times", "read", "write", "newLine"};
-char operators[] = {'+', '-', '*', '/'};
+char operators[][1] = {"+", "-", "*", "/"};
 
 int isInKeywords(char *str)
 {
@@ -36,7 +36,7 @@ int isInOperators(char *str)
 {
     for (int i = 0; i < 4; i++)
     {
-        if (str[0] == operators[i])
+        if (strcmp(str, operators[i]) == 0)
         {
             return 1;
         }
@@ -67,7 +67,8 @@ int integerControl(int num)
 {
     if (num < 0)
     {
-        integerControl(num * -1); // Recursive call to make the number positive.
+        printf("Error: Integer is negative.\n");
+        integerControl(0); // Recursive call to negative nums.
     }
     else
     {
@@ -91,15 +92,24 @@ int integerControl(int num)
 
 int operatorControl(char *str)
 {
-    if (strlen(str) != 1)
+    int len = strlen(str);
+    if (len)
     {
+        printf("string 1 e eşit değil\n");
         return 0;
     }
     else if (isInOperators(str))
     {
-        printf("Operator(%c)\n", str[0]);
+        printf("Operator e girdi\n");
+        printf("Operator(%c)\n", str);
         return 1;
     }
+    else
+    {
+        printf("Operator değil\n");
+        return 0;
+    }
+    
 }
 
 int bracketControl(char *str)
@@ -134,7 +144,10 @@ int commentControl(char *str)
 
 int main()
 {
-    operatorControl("+");
+    char str[] = "+";
+    int lenght = strlen(str);
+    printf("String uzunluğu: %\n", strlen(str));
+    //operatorControl(str);
 
     return 0;
 }
