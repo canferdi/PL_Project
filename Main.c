@@ -115,7 +115,22 @@ int bracketControl(char *str)
 
 int stringControl(char *str)
 {
-    // TODO: Implement string control.
+    char *start = strstr(str, "\"");     // Find the start of the string.
+    char *end = strstr(start + 1, "\""); // Find the end of the string.
+    if (start != NULL && end != NULL)
+    {
+        printf("String(");
+        for (char *ptr = start + 1; ptr < end; ptr++)
+        {
+            printf("%c", *ptr);
+        }
+        printf(")\n");
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
 }
 
 int keywordControl(char *str)
@@ -160,16 +175,14 @@ int commentControl(char *str)
 {
     char *start = strstr(str, "/*"); // Find the start of the comment.
     char *end = strstr(str, "*/");   // Find the end of the comment.
-    printf("Start: %s\n", start);
-    printf("End: %s\n", end);
     if (start != NULL && end != NULL)
     {
-        printf("Comment: ");
+        printf("Comment(");
         for (char *ptr = start + 2; ptr < end; ptr++)
         {
             printf("%c", *ptr);
         }
-        printf("\n");
+        printf(")\n");
         return 1;
     }
     else
@@ -180,7 +193,6 @@ int commentControl(char *str)
 
 int main()
 {
-    char *myString = "/*merhaba*/";
-    commentControl(myString);
+
     return 0;
 }
