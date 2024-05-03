@@ -146,10 +146,10 @@ void fileReading(char *filePath) {
     newPtr = createFile(filePath);
 
     char lineString[100];
-    char tokenString[257] = {'\0'}; //for tokenStrings to identify which token it is.
+    char tokenString[257] = {'\0'}; // for tokenStrings to identify which token it is.
     int commentControl = 0;
     int strconControl = 0;
-    int tokenIndex = 0; 
+    int tokenIndex = 0;
     // Read the line content and print it
     while (fgets(lineString, 100, fptr)) { // Beginning of everyline of the file.
         int index = 0;
@@ -170,7 +170,7 @@ void fileReading(char *filePath) {
                 commentControl = 1;
 
                 continue;
-            } else if (commentControl && tokenString[0] == '\0') { //If commentControl is 1, it means searching for "*/".
+            } else if (commentControl && tokenString[0] == '\0') { // If commentControl is 1, it means searching for "*/".
                 if (strcmp("*/", commentStrings) == 0) {
                     index = index + 2;
                     startIndex = index;
@@ -181,7 +181,7 @@ void fileReading(char *filePath) {
                 continue;
             }
             // String tokenizer.
-            if (charOfIndex == '"' && strconControl == 0 && tokenString[0] == '\0') { //If strconControl is 1, it means searching for "*/".
+            if (charOfIndex == '"' && strconControl == 0 && tokenString[0] == '\0') { // If strconControl is 1, it means searching for "*/".
                 index++;
                 startIndex = index;
                 strconControl = 1;
@@ -212,10 +212,10 @@ void fileReading(char *filePath) {
                 if (condition) {
                     tokenString[tokenIndex++] = lineString[index++];
                     continue;
-                    
+
                 }
-                 //If enters else block, it means end of the integer token and it is time to tokenize the value.
-                 else { 
+                // If enters else block, it means end of the integer token and it is time to tokenize the value.
+                else {
                     startIndex = index;
                     tokenString[tokenIndex] = '\0';
 
@@ -236,8 +236,8 @@ void fileReading(char *filePath) {
                     tokenString[tokenIndex++] = lineString[index++];
                     continue;
                 }
-                //If enters else block, it means end of the nonInteger token and it is time to tokenize the value.
-                 else {
+                // If enters else block, it means end of the nonInteger token and it is time to tokenize the value.
+                else {
                     startIndex = index;
                     tokenString[tokenIndex] = '\0';
 
@@ -284,14 +284,14 @@ void fileReading(char *filePath) {
 
             startIndex++;
             index++;
-            //Every end of the index, we check the next index.
+            // Every end of the index, we check the next index.
         }
     }
     if (commentControl) {
-        printf("Error! Comment part is not completed!");
+        fprintf(newPtr, "Error! Comment part is not completed!");
     }
     if (strconControl) {
-        printf("Error! String constant part is not completed!");
+        fprintf(newPtr, "Error! String constant part is not completed!");
     }
 
     fclose(fptr);
@@ -317,6 +317,7 @@ FILE *createFile(char *filePath) {
     sprintf(sendPath, "%s.lex", newPath);
     FILE *ptr;
     ptr = fopen(sendPath, "w");
+
     return ptr;
 }
 
