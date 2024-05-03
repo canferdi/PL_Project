@@ -6,6 +6,7 @@
 char keyWords[][10] = {"int", "text", "is", "loop", "times", "read", "write", "newLine"};
 char operators[][1] = {"+", "-", "*", "/"};
 
+// Helper method for keyword control.
 int isInKeywords(char *str)
 {
     for (int i = 0; i < 8; i++)
@@ -16,9 +17,9 @@ int isInKeywords(char *str)
         }
     }
     return 0; // Keyword not found.
-    
 }
 
+// Helper method for operator control.
 int isInOperators(char str)
 {
     for (int i = 0; i < 4; i++)
@@ -96,15 +97,18 @@ int operatorControl(char *str)
 
 int bracketControl(char *str)
 {
-    if(str[0] == '{'){
+    if (str[0] == '{')
+    {
         printf("LeftCurlyBracket\n");
         return 1;
     }
-    else if(str[0] == '}'){
+    else if (str[0] == '}')
+    {
         printf("RightCurlyBracket\n");
         return 1;
     }
-    else{
+    else
+    {
         return 0;
     }
 }
@@ -116,22 +120,26 @@ int stringControl(char *str)
 
 int keywordControl(char *str)
 {
-    if(isInKeywords(str)){
+    if (isInKeywords(str))
+    {
         printf("Keyword(%s)\n", str);
         return 1;
     }
-    else{
+    else
+    {
         return 0;
     }
 }
 
 int endOfLineControl(char *str)
 {
-    if(str[0] == '.'){
+    if (str[0] == '.')
+    {
         printf("EndOfLine\n");
         return 1;
     }
-    else{
+    else
+    {
         return 0;
     }
 }
@@ -146,16 +154,33 @@ int commaControl(char *str)
     {
         return 0;
     }
-    
 }
 
 int commentControl(char *str)
 {
-    // TODO: Implement comment control.
+    char *start = strstr(str, "/*"); // Find the start of the comment.
+    char *end = strstr(str, "*/");   // Find the end of the comment.
+    printf("Start: %s\n", start);
+    printf("End: %s\n", end);
+    if (start != NULL && end != NULL)
+    {
+        printf("Comment: ");
+        for (char *ptr = start + 2; ptr < end; ptr++)
+        {
+            printf("%c", *ptr);
+        }
+        printf("\n");
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
 }
 
 int main()
 {
-    bracketControl("{s");
+    char *myString = "/*merhaba*/";
+    commentControl(myString);
     return 0;
 }
