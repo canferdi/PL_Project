@@ -6,7 +6,7 @@
 char keyWords[][10] = {"int", "text", "is", "loop", "times", "read", "write", "newLine"};
 char operators[][1] = {"+", "-", "*", "/"};
 
-// Helper method for keyword control.
+// Helper method for keyword control. //! DO NOT MODIFY.
 int isInKeywords(char *str)
 {
     for (int i = 0; i < 8; i++)
@@ -19,7 +19,7 @@ int isInKeywords(char *str)
     return 0; // Keyword not found.
 }
 
-// Helper method for operator control.
+// Helper method for operator control. //! DO NOT MODIFY.
 int isInOperators(char str)
 {
     for (int i = 0; i < 4; i++)
