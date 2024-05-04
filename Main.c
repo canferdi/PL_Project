@@ -1,7 +1,7 @@
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
 
 char keyWords[][10] = {"int", "text", "is", "loop", "times", "read", "write", "newLine"};
 char operators[][1] = {"+", "-", "*", "/"};
@@ -20,30 +20,6 @@ int isSpecial(char indexCharacter) {
         if (indexCharacter == specialChars[index])
             return 1;
         index++;
-
-// Helper method for keyword control. //! DO NOT MODIFY.
-int isInKeywords(char *str)
-{
-    for (int i = 0; i < 8; i++)
-    {
-        if (strcmp(str, keyWords[i]) == 0)
-        {
-            return 1; // Keyword found.
-        }
-    }
-    return 0; // Keyword not found.
-}
-
-// Helper method for operator control. //! DO NOT MODIFY.
-int isInOperators(char str)
-{
-    for (int i = 0; i < 4; i++)
-    {
-        if (str == operators[0][i])
-        {
-            return 1;
-        }
-
     }
     return 0;
 }
@@ -54,47 +30,50 @@ void reset(char *str) {
     }
 }
 
-int identifierControl(char *str)
-{
-    if (strlen(str) > 10)
-    {
-        printf("Error: Identifier is too long.\n");
-        return 0;
+int isInKeywords(char *str) {
+    for (int i = 0; i < 8; i++) {
+        if (strcmp(str, keyWords[i]) == 0) {
+            return 1; // Keyword found.
+        }
     }
-    else if (!isalpha(str[0]))
-    {
-        printf("Error: Identifier must start with a letter.\n");
-        return 0;
+    return 0; // Keyword not found.
+}
+
+int isInOperators(char str) {
+    for (int i = 0; i < 4; i++) {
+        if (str == operators[0][i]) {
+            return 1;
+        }
     }
-    else
-    {
-        printf("Identifier(%s)\n", str);
+    return 0;
+}
+
+int identifierControl(char *str, FILE *ptr) {
+    if (strlen(str) > 10) {
+        fprintf(ptr, "Error: Identifier is too long.\n");
+        return 0;
+    } else if (!isalpha(str[0])) {
+        fprintf(ptr, "Error: Identifier must start with a letter.\n");
+        return 0;
+    } else {
+        fprintf(ptr, "Identifier(%s)\n", str);
         return 0;
     }
 }
 
-int integerControl(int num)
-{
-    if (num < 0)
-    {
-        printf("Error: Integer is negative.\n");
-        integerControl(0); // Recursive call to negative nums.
-    }
-    else
-    {
-        if (num > 99999999)
-        {
-            printf("Error: Integer is too long.\n");
+int integerControl(int num, FILE *ptr) {
+    if (num < 0) {
+        fprintf(ptr, "Error: Integer is negative.\n");
+        integerControl(0, ptr); // Recursive call to negative nums.
+    } else {
+        if (num > 99999999) {
+            fprintf(ptr, "Error: Integer is too long.\n");
             return 0;
-        }
-        else if (num < 0)
-        {
-            printf("Error: Integer is negative.\n");
+        } else if (num < 0) {
+            fprintf(ptr, "Error: Integer is negative.\n");
             return 0;
-        }
-        else
-        {
-            printf("IntConts(%d)\n", num);
+        } else {
+            fprintf(ptr, "IntConts(%d)\n", num);
             return 1;
         }
     }
@@ -306,7 +285,8 @@ void fileReading(char *filePath) {
             startIndex++;
             index++;
             // Every end of the index, we check the next index.
-          
+        }
+    }
     if (commentControl) {
         fprintf(newPtr, "Error! Comment part is not completed!");
     }
@@ -342,7 +322,8 @@ FILE *createFile(char *filePath) {
 }
 
 int main() {
+
     fileReading("aa.sta");
-  
+
     return 0;
 }
