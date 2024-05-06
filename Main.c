@@ -140,6 +140,7 @@ int bracketControl(char *str, FILE *ptr)
         return 0;
     }
 }
+
 int stringControl(char *str, FILE *ptr)
 {
     if (strlen(str) > 256)
